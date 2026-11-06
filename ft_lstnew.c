@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/14 20:55:10 by durisosa          #+#    #+#             */
-/*   Updated: 2026/06/19 10:37:26 by durisosa         ###   ########.fr       */
+/*   Created: 2026/05/29 13:54:49 by durisosa          #+#    #+#             */
+/*   Updated: 2026/05/29 15:33:33 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*node;
 
-# include <stdlib.h>
-# include <unistd.h>
-
-char	*get_next_line(int fd);
-int		ft_strlen_chr(char *str, char c);
-char	*ft_strjoin_gnl(char *dest, char *src);
-void	ft_shift(char *buffer);
-void	*ft_calloc(size_t nmemb, size_t size);
-void	ft_strcpy_gnl(char *dest, char *src);
-
-#endif
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
+}

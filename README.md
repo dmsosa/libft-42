@@ -1,94 +1,36 @@
 *Este proyecto ha sido creado como parte del currículo de 42 por durisosa.*
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Version](https://img.shields.io/badge/version-1.0.0-green)   
-![GitHub stars](https://img.shields.io/github/stars/dmsosa/REPO?style=social)
 
-# Description.
+# Descripción
 
-Get next line is a function that allow us to read bytes from an open file "X", up to the next '\n' character, in other words, line by line.
+Este proyecto consiste en la implementación personalizada de las funciones utilitarias básicas de libc y la creación de una librería que sirve de apoyo para el estudiante para proyectos que se realicen con el lenguaje de programación C en el futuro.
 
-# Instructions
+# Instrucciones
 
-1. Clone the repo with `git clone`;
-2. This project has no Makefile, so only compiling the main will make you able to test it.
-3. Copy this command to compile the mandatory part `gcc -Wall -Wextra -Werror -Wl,--wrap=malloc -g get_next_line.c get_next_line_utils.c main.c -o a.out`
-4. Copy this command to compile the bonus `gcc -Wall -Wextra -Werror -Wl,--wrap=malloc -g get_next_line_bonus.c get_next_line_utils_bonus.c main.c -o a.out`
-5. Execute the binary ./a.out
+Para la creación de la librería libft.a, sigue los siguientes pasos:
 
-# Resources
+1. Clonar el repositorio usando el comando `git clone`;
+2. Ejecutar el comando `make` para compilar la librería;
+3. Ejecutar el comando `make bonus` para añadir las funciones adicionales a la librería;
+4. Ejecutar el comando `make clean` para eliminar los objetos (archivos .o) creados;
+5. Ejecutar el comando `make fclean` para eliminar los objetos y la librería;
+6. Ejecutar el comando `make re` para eliminar los objetos, la librería y crear la librería nuevamente;
 
-The Manual ('man' command) of the Unix operating system, Google and Stack Overflow questions were used as the main sources of information.
+**Los objetos y la librería han sido compilados con el compilador CC, y las opciones de compilación Warning All, Warning Extra y Warning Error.**
 
-Other support materials have been the GitHub repositories of other cursus students.
+`cc -Wall -Wextra -Werror`
 
-Students that inspired me a lot:
+# Recursos
 
-[youssef-be](https://github.com/youssef-benchaaboun)
-[jdecorte-be](https://github.com/jdecorte-be)
-[mcombeau](https://github.com/mcombeau)
-[suspectedoceano](https://github.com/suspectedoceano)
+Como principales fuentes de información se utilizó el Manual (comando 'man') del sistema operativo Unix, Google y preguntas de Stack Overflow.
 
+Otros materiales de apoyo han sido los repositorios de GitHub de otros estudiantes del cursus.
 
-## IA Usage:
+## Uso de la IA:
 
-I used the IA as a support to speed up the following tasks: 
+No se ha utilizado la inteligencia artificial para la realización de este proyecto.
 
-a. Add shields to the README.md.
-b. Filter best Stack Overflow answers to my questions
-c. Summary information available on the internet
-d. Investigating which smaller skills were needed to successfully understand this topic.
+## Acerca de la biblioteca
 
-## About the function
+Esta biblioteca implementa las utilidades más utilizadas de la biblioteca libc, incluyendo funciones para tareas comunes al trabajar con cadenas de caracteres, gestión de memoria y listas enlazadas.
 
-This fucntion is recommended to be tested with `francinette` or `paco` to test it.
-
-
-# EXPLAIN IT AS IF I'M 5 YEARS OLD:
-
-# SOLUTION 1 jdecort-
-
-if I read before entering the loop, the first time I read BUF_SIZE bytes from fd
-now I join it to data, but what if data was already something? since if data is NULL,
-just append buffer so data = 0 + buffer. If data was something then data = data + buffer 
-but if I just miss BUF_SIZE to reach EOF?
-then I reached EOF before entering the loop, so data = strjoin, and if not, I never enter the while loop so 
-directly returns the same data as before
-
-## what happens in strjoin if buf is NULL?
-
-### case buf = static char[]
-	if bufLen is null, ftstrlen returns 0, 
-	if if strlenreturns0, ftcalloc has space for linelen or 0
-	if buf is null, it means that my static char is initialized as null, but it wont happen, in any case, 
-	if its first char is null. what would happen? then strlen returns 0
-	so my copy wont append anything and joined will be malloced with nulls
-### case buf = malloc char *
-	if bufLen is null, ftstrlen returns 0, 
-	and then?
-
-### what does strjoin do?
-	\n is added from the first time, in the first time, I have no newline in line as it is NULL 
-	since it start as null, strlen returns 0, I malloc space only for 0 + buflen the first time 
-	it will append until \n or until the end if buf has not found any \n yet 
-	in further iterations, line is ensure to dont have \n, since if it has, in our gnl while loop it will be detected to have a \n and returned right away. 
-	so if we are in another iteration it is implicit that it will not have any \n char
-
-### why it frees the prev line?
-	but I need to free the line, 
-	what happens if i free it? 
-	If i dont free and return the same line, 
-	conditions do not change in our 
-	line and eof > then return the line 
-	if I free, then I wont be able to return it if I am in the eof
-	I was not able to join until the newline...
-	the malloc gave me error while creating a strjoin, 
-	my program wont crash simply returns NULL, buf I left memory handling 
-	if my malloc fails, i return NULL, and free the prev line so we directly return NULL 
-	we do this since we are directly replacing line with the returned value, and not using any tmp variable
-
-## Solution 2: youssef-be
-
-
-## Solution 3: suspected oceano
-
-#### ... to be continued.
+Si deseas seguir el proyecto, se recomienda instalar `francinette` para probarlo.
